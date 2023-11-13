@@ -1,5 +1,5 @@
 const { src, dest, watch, series } = require("gulp");
-const sass = require("gulp-sass");
+const sass = require("gulp-sass")(require("sass"));
 const browserSync = require("browser-sync").create();
 
 //Scss File
@@ -31,10 +31,9 @@ function browserSyncReload(cb) {
 }
 
 function watchTask() {
-  watch(
-    ["*.html", "/src/pages/**/*.html", "/src/assets/js/**/*.js"],
-    browserSyncReload
-  );
+  watch(["*.html"], browserSyncReload);
+  watch(["/src/pages/**/*.html"], browserSyncReload);
+  watch(["/src/assets/js/**/*.js"], browserSyncReload);
   //.on('change',browserSyncReload);
   watch(["/src/assets/sass/**/*.scss"], series(scssTask, browserSyncReload));
 }
