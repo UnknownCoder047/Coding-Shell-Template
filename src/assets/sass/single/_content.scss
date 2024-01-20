@@ -1,0 +1,27 @@
+.single__content {
+  .card-header {
+  }
+}
+.show-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 5px;
+  button {
+    background-color: #ca752b;
+    color: #fcf9ed;
+    &:hover {
+      background-color: #68b0ab;
+      color: #f7ede2;
+    }
+  }
+}
+.copy-code {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+  width: max-content;
+  height: max-content;
+}

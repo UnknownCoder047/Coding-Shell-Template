@@ -1,0 +1,24 @@
+.hero {
+  height: 50vh;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__heading {
+    text-align: center;
+  }
+  &__docs-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    a {
+      color: #edff00;
+      background-color: rgb(7 217 159);
+      padding: 20px;
+      border-radius: 10px;
+      i {
+        margin-left: 20px;
+      }
+    }
+  }
+}

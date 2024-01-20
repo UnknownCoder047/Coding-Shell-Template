@@ -1,41 +1,30 @@
-const { src, dest, watch, series } = require("gulp");
+const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const browserSync = require("browser-sync").create();
 
 //Scss File
 
 function scssTask() {
-  return src("src/assets/sass/**/*.scss", { sourcemaps: true })
-    .pipe(sass())
-    .on("error", sass.logError)
-    .pipe(dest("src/assets/css", { sourcemaps: "." }))
+  return gulp
+    .src("src/assets/sass/**/*.scss", { sourcemaps: true })
+    .pipe(sass().on("error", sass.logError))
+
+    .pipe(gulp.dest("src/assets/css", { sourcemaps: "." }))
     .pipe(browserSync.stream());
 }
 
 //Browser Sync
 
-function browserSyncServe(cb) {
+function watch() {
   browserSync.init({
     server: {
-      baseDir: ".",
+      baseDir: "./",
     },
   });
-  cb();
+  gulp.watch("./src/assets/sass/**/*.scss", scssTask);
+  gulp.watch("./**/*.html").on("change", () => browserSync.reload());
+  gulp.watch("./**/*.js").on("chnage", () => browserSync.reload());
 }
 
 //Reload
-
-function browserSyncReload(cb) {
-  browserSync.reload();
-  cb();
-}
-
-function watchTask() {
-  watch(["*.html"], browserSyncReload);
-  watch(["/src/pages/**/*.html"], browserSyncReload);
-  watch(["/src/assets/js/**/*.js"], browserSyncReload);
-  //.on('change',browserSyncReload);
-  watch(["/src/assets/sass/**/*.scss"], series(scssTask, browserSyncReload));
-}
-
-exports.default = series(scssTask, browserSyncServe, watchTask);
+exports.default = gulp.series(scssTask, watch);

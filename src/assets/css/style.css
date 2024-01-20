@@ -1,2 +1,63 @@
+html {
+  margin: 0;
+  padding: 0;
+}
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.hero {
+  height: 50vh;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__heading {
+  text-align: center;
+}
+.hero__docs-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.hero__docs-button a {
+  color: #edff00;
+  background-color: rgb(7, 217, 159);
+  padding: 20px;
+  border-radius: 10px;
+}
+.hero__docs-button a i {
+  margin-left: 20px;
+}
+
+.show-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 5px;
+}
+.show-button button {
+  background-color: #ca752b;
+  color: #fcf9ed;
+}
+.show-button button:hover {
+  background-color: #68b0ab;
+  color: #f7ede2;
+}
+
+.copy-code {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+  width: max-content;
+  height: max-content;
+}
 /*# sourceMappingURL=style.css.map */
